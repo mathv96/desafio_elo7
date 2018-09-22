@@ -1,5 +1,7 @@
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
+from validation.validate_event import validate_event
+
 
 app = Flask(__name__)
 api = Api(app)
@@ -15,11 +17,17 @@ class Insert_event(Resource):
     def post(self):
         #insert
         inputed_json = request.get_json()
-        #dao will be called
-        response = jsonify({'result':'Event saved.'})
-        response.status_code = 201
-        return response
-
+        response_validation = validate_event(inputed_json)
+        print(response_validation)
+        if response_validation == False:
+            response = jsonify(result="Please, send the right structure of event json.")
+            response.status_code = 200
+            return response
+        else:    
+            #dao will be called
+            response = jsonify({'result':'Event saved.'})
+            response.status_code = 201
+            return response    
 
 #routes
 api.add_resource(Index, '/')
