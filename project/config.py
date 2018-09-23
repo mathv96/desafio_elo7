@@ -1,0 +1,5 @@
+user_mysql = "root"
+password_mysql = "teste123"
+host = "127.0.0.1"
+database = "desafio_elo7"
+table_name = "events"
