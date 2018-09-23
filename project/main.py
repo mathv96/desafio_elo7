@@ -1,6 +1,8 @@
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
 from validation.validate_event import validate_event
+from DAO.insert import insert_event
+from DAO.create_table import create_table
 
 
 app = Flask(__name__)
@@ -15,7 +17,6 @@ class Index(Resource):
 
 class Insert_event(Resource):
     def post(self):
-        #insert
         inputed_json = request.get_json()
         response_validation = validate_event(inputed_json)
         print(response_validation)
@@ -24,7 +25,8 @@ class Insert_event(Resource):
             response.status_code = 200
             return response
         else:    
-            #dao will be called
+            create_table()
+            
             response = jsonify({'result':'Event saved.'})
             response.status_code = 201
             return response    
