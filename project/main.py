@@ -1,5 +1,6 @@
 from flask import Flask, request, jsonify
 from flask_restful import Resource, Api
+
 from validation.validate_event import validate_event
 from DAO.insert import insert_event
 from DAO.create_table import create_table
@@ -25,11 +26,16 @@ class Insert_event(Resource):
             response.status_code = 200
             return response
         else:    
-            create_table()
-            
-            response = jsonify({'result':'Event saved.'})
-            response.status_code = 201
-            return response    
+            response_creatiion = create_table()
+            response_insert = insert_event(inputed_json)
+            if response_insert:
+                response = jsonify({'result':'Event saved.'})
+                response.status_code = 201
+                return response
+            else:
+                response = jsonify({'result':'Event was not saved.'})
+                response.status_code = 200
+                return response    
 
 #routes
 api.add_resource(Index, '/')
