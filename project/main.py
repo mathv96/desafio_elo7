@@ -20,7 +20,7 @@ class Insert_event(Resource):
         response_validation = validate_event(inputed_json)
         print(response_validation)
         if response_validation == False:
-            response = jsonify(result="Please, send the right structure of event json.")
+            response = jsonify(result="Please, send a request with the right json structure.")
             response.status_code = 200
             return response
         else:    
