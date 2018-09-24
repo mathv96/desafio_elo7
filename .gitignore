@@ -1,4 +1,4 @@
 *.pyc
 virtualenv/
 virtualenv/*
-*.txt
+tests_curls.txt
