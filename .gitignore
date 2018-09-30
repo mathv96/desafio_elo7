@@ -6,3 +6,5 @@ conf_local.env
 *.vscode
 logger/*
 logger/
+mysql/data/*
+start_up.sh
