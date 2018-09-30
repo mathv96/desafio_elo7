@@ -2,3 +2,5 @@
 virtualenv/
 virtualenv/*
 tests_curls.txt
+conf_local.env
+*.vscode
