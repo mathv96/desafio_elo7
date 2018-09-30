@@ -4,6 +4,8 @@ services:
     image: mysql:5.7
     env_file:
       - conf.env
+    volumes:
+      - ./mysql/data/:/var/lib/mysql
   api-events:
     depends_on:
       - mysql_api_events
@@ -14,3 +16,6 @@ services:
     env_file:
       - conf.env
 
+volumes:
+  mysql_data:
+    driver: local
