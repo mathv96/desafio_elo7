@@ -1,6 +1,8 @@
 *.pyc
 virtualenv/
 virtualenv/*
+virtualenv-2/
+virtualenv-2/*
 tests_curls.txt
 conf_local.env
 *.vscode

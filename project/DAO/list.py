@@ -16,7 +16,7 @@ def list_events():
             result_dict={}
             result_dict['result']=[]
             for line in result_list:
-                result_dict['result'].append({"id": str(line[0]), "component": str(line[1]), "responsible": str(line[3]), "status": str(line[4]), "date": str(line[5])})
+                result_dict['result'].append({"id": str(line[0]), "component": str(line[1]),"version": str(line[2]), "responsible": str(line[3]), "status": str(line[4]), "date": str(line[5])})
             json_result = result_dict
             conn.close()
         except Exception as e:
