@@ -3,7 +3,7 @@ from flask_restful import Resource, Api
 
 from validation.validate_event import validate_event
 from DAO.insert import insert_event
-from DAO.list import lis_events
+from DAO.list import list_events
 from DAO.create_table import create_table
 
 
@@ -45,8 +45,14 @@ class Insert_event(Resource):
 
 class List_events(Resource):
     def get(self):
-        lis_events()
-        return "Events listed."
+        json_list = list_events()
+        if json_list==False:
+            response = jsonify({'result':'There\'s no list to return.'})
+            response.status_code = 200
+        else:
+            response = jsonify(json_list)
+            response.status_code = 200
+        return response
 
 
 
