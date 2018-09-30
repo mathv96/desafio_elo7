@@ -1,5 +1,7 @@
-user_mysql = "root"
-password_mysql = "teste123"
-host = "127.0.0.1"
-database = "desafio_elo7"
-table_name = "events"
+import os
+
+user_mysql = os.environ['MYSQL_USER']
+password_mysql = os.environ['MYSQL_ROOT_PASSWORD']
+host = os.environ['MYSQL_HOST_DNS']
+database = os.environ['MYSQL_DATABASE']
+table_name = os.environ['MYSQL_TABLE_NAME']
